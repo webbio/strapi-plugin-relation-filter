@@ -16,7 +16,7 @@ To enable this plugin. Add it to `plugins.ts`
 
 To use custom filters in relational fields. Add the following code to your relation attribute in a `schema.json` file:
 
-```json
+```jsonc
 {
   // ...
   "pluginOptions": {
@@ -31,7 +31,7 @@ To use custom filters in relational fields. Add the following code to your relat
 
 Example:
 
-```json
+```jsonc
 {
 	"kind": "collectionType",
 	"collectionName": "pages",
