@@ -285,6 +285,78 @@ export interface AdminUser extends Schema.CollectionType {
 	};
 }
 
+export interface ApiPagePage extends Schema.CollectionType {
+	collectionName: 'pages';
+	info: {
+		description: '';
+		displayName: 'Page';
+		pluralName: 'pages';
+		singularName: 'page';
+	};
+	options: {
+		draftAndPublish: true;
+	};
+	attributes: {
+		createdAt: Attribute.DateTime;
+		createdBy: Attribute.Relation<'api::page.page', 'oneToOne', 'admin::user'> & Attribute.Private;
+		designers: Attribute.Relation<'api::page.page', 'oneToMany', 'api::team-member.team-member'> &
+			Attribute.SetPluginOptions<{
+				'relation-filter': {
+					filters: {
+						role: {
+							$eq: 'designer';
+						};
+					};
+				};
+			}>;
+		developers: Attribute.Relation<'api::page.page', 'oneToMany', 'api::team-member.team-member'> &
+			Attribute.SetPluginOptions<{
+				'relation-filter': {
+					filters: {
+						role: {
+							$eq: 'developer';
+						};
+					};
+				};
+			}>;
+		overig: Attribute.Relation<'api::page.page', 'oneToMany', 'api::team-member.team-member'> &
+			Attribute.SetPluginOptions<{
+				'relation-filter': {
+					filters: {
+						role: {
+							$null: true;
+						};
+					};
+				};
+			}>;
+		publishedAt: Attribute.DateTime;
+		updatedAt: Attribute.DateTime;
+		updatedBy: Attribute.Relation<'api::page.page', 'oneToOne', 'admin::user'> & Attribute.Private;
+	};
+}
+
+export interface ApiTeamMemberTeamMember extends Schema.CollectionType {
+	collectionName: 'team_members';
+	info: {
+		description: '';
+		displayName: 'Team Member';
+		pluralName: 'team-members';
+		singularName: 'team-member';
+	};
+	options: {
+		draftAndPublish: false;
+	};
+	attributes: {
+		active: Attribute.Boolean & Attribute.DefaultTo<true>;
+		createdAt: Attribute.DateTime;
+		createdBy: Attribute.Relation<'api::team-member.team-member', 'oneToOne', 'admin::user'> & Attribute.Private;
+		name: Attribute.String;
+		role: Attribute.Enumeration<['developer', 'designer']>;
+		updatedAt: Attribute.DateTime;
+		updatedBy: Attribute.Relation<'api::team-member.team-member', 'oneToOne', 'admin::user'> & Attribute.Private;
+	};
+}
+
 export interface PluginContentReleasesRelease extends Schema.CollectionType {
 	collectionName: 'strapi_releases';
 	info: {
@@ -608,6 +680,8 @@ declare module '@strapi/types' {
 			'admin::transfer-token': AdminTransferToken;
 			'admin::transfer-token-permission': AdminTransferTokenPermission;
 			'admin::user': AdminUser;
+			'api::page.page': ApiPagePage;
+			'api::team-member.team-member': ApiTeamMemberTeamMember;
 			'plugin::content-releases.release': PluginContentReleasesRelease;
 			'plugin::content-releases.release-action': PluginContentReleasesReleaseAction;
 			'plugin::i18n.locale': PluginI18NLocale;
