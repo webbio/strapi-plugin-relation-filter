@@ -4,6 +4,7 @@ import { Context, Next } from 'koa';
 export default (config: unknown, { strapi }: { strapi: Strapi }) => {
 	return async (ctx: Context, next: Next) => {
 		const { model, targetField } = ctx.params;
+		const { entityId } = ctx.query;
 
 		const attributePluginConfig = await strapi
 			.service('plugin::relation-filter.config')
@@ -16,7 +17,7 @@ export default (config: unknown, { strapi }: { strapi: Strapi }) => {
 		// Add the custom filters to the existing query
 		ctx.query = strapi
 			.service('plugin::relation-filter.query')
-			.applyRelationFilters(ctx.query, attributePluginConfig.filters);
+			.applyRelationFilters(ctx.query, attributePluginConfig?.filters);
 
 		return await next();
 	};

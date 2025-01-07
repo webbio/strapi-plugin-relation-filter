@@ -13,10 +13,9 @@ export default (config: unknown, { strapi }: { strapi: Strapi }) => {
 			return await next();
 		}
 
-		// Add the custom filters to the existing query
 		ctx.query = strapi
 			.service('plugin::relation-filter.query')
-			.applyRelationFilters(ctx.query, attributePluginConfig.filters);
+			.applyRelationFilters(ctx.query, attributePluginConfig?.filters);
 
 		return await next();
 	};
