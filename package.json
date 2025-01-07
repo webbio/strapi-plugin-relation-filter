@@ -1,0 +1,60 @@
+{
+	"name": "strapi-plugin-relation-filter",
+	"version": "0.1.0",
+	"private": true,
+	"description": "A Strapi application",
+	"license": "MIT",
+	"author": {
+		"name": "A Strapi developer"
+	},
+	"scripts": {
+		"dev": "strapi develop",
+		"start": "strapi start",
+		"build": "yarn build-plugin && strapi build",
+		"build-plugin": "cd src/plugins/strapi-plugin-relation-filter && yarn && yarn build",
+		"watch": "strapi develop --watch-admin",
+		"format": "prettier --write .",
+		"lint": "eslint .",
+		"strapi": "strapi",
+		"postinstall": "node ./scripts/postinstall.js",
+		"spu": "yarn upgrade-interactive --latest",
+		"publish-plugin": "cp './README.md' './src/plugins/strapi-plugin-relation-filter' && cd src/plugins/strapi-plugin-relation-filter && yarn publish && rimraf './README.md'"
+	},
+	"prettier": "@webbio/prettier-config",
+	"dependencies": {
+		"@strapi/plugin-cloud": "4.25.15",
+		"@strapi/plugin-i18n": "4.25.15",
+		"@strapi/plugin-users-permissions": "4.25.15",
+		"@strapi/strapi": "4.25.15",
+		"better-sqlite3": "8.6.0",
+		"react": "^18.0.0",
+		"react-dom": "^18.0.0",
+		"react-router-dom": "5.3.4",
+		"styled-components": "5.3.3"
+	},
+	"devDependencies": {
+		"@babel/core": "^7.24.7",
+		"@babel/eslint-parser": "^7.24.7",
+		"@babel/preset-react": "^7.23.3",
+		"@webbio/eslint-config-strapi": "^1.1.7",
+		"@webbio/prettier-config": "^0.0.8",
+		"babel-eslint": "^10.1.0",
+		"husky": "^8.0.3",
+		"jest": "^29.7.0",
+		"lint-staged": "^14.0.1",
+		"prettier": "^3.0.3",
+		"rimraf": "^5.0.7",
+		"typescript": "^5.4.5",
+		"@types/react": "^18.2.21",
+		"@types/react-dom": "^18.2.7",
+		"@types/react-router-dom": "^5.3.3"
+	},
+	"engines": {
+		"node": ">=18.0.0 <=20.x.x",
+		"npm": ">=6.0.0"
+	},
+	"strapi": {
+		"uuid": "f1f5b333-22e5-4b3a-b6b7-53f1f083271f"
+	},
+	"packageManager": "yarn@1.22.21"
+}

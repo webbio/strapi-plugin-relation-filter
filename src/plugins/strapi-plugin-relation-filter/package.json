@@ -1,0 +1,55 @@
+{
+	"name": "@webbio/strapi-plugin-relation-filter",
+	"version": "1.0.1",
+	"description": "Plugin that enables adding filters to relations in the Strapi content manager",
+	"scripts": {
+		"develop": "tsc -p tsconfig.server.json -w",
+		"build": "tsc -p tsconfig.server.json",
+		"prepublish": "tsc -p tsconfig.server.json",
+		"format": "prettier --write .",
+		"spu": "yarn upgrade-interactive --latest"
+	},
+	"strapi": {
+		"name": "relation-filter",
+		"description": "Description of relation-filter plugin",
+		"kind": "plugin",
+		"displayName": "Relation Filter"
+	},
+	"dependencies": {
+		"@strapi/design-system": "1.19.0",
+		"@strapi/helper-plugin": "4.25.12",
+		"@strapi/icons": "1.19.0",
+		"@strapi/typescript-utils": "4.25.15",
+		"@strapi/utils": "4.25.15"
+	},
+	"devDependencies": {
+		"typescript": "^5.4.5"
+	},
+	"peerDependencies": {
+		"react": "^17.0.0 || ^18.0.0",
+		"react-dom": "^17.0.0 || ^18.0.0",
+		"react-router-dom": "^5.3.4"
+	},
+	"author": {
+		"name": "Webbio B.V.",
+		"email": "info@webbio.nl",
+		"url": "https://webbio.nl"
+	},
+	"maintainers": [
+		{
+			"name": "Webbio B.V.",
+			"email": "info@webbio.nl",
+			"url": "https://webbio.nl"
+		}
+	],
+	"engines": {
+		"node": ">=16.0.0 <=20.x.x",
+		"npm": ">=6.0.0"
+	},
+	"license": "MIT",
+	"packageManager": "yarn@1.22.21",
+	"publishConfig": {
+		"access": "public",
+		"registry": "https://registry.npmjs.org"
+	}
+}
