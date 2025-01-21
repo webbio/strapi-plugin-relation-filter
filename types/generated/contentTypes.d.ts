@@ -319,6 +319,7 @@ export interface ApiPagePage extends Schema.CollectionType {
 					};
 				};
 			}>;
+		leads: Attribute.Component<'components.leads'>;
 		overig: Attribute.Relation<'api::page.page', 'oneToMany', 'api::team-member.team-member'> &
 			Attribute.SetPluginOptions<{
 				'relation-filter': {

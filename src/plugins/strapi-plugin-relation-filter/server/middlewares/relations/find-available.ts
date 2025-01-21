@@ -4,7 +4,6 @@ import { Context, Next } from 'koa';
 export default (config: unknown, { strapi }: { strapi: Strapi }) => {
 	return async (ctx: Context, next: Next) => {
 		const { model, targetField } = ctx.params;
-		const { entityId } = ctx.query;
 
 		const attributePluginConfig = await strapi
 			.service('plugin::relation-filter.config')

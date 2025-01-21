@@ -53,6 +53,12 @@
 					}
 				}
 			}
+		},
+		"leads": {
+			"displayName": "leads",
+			"type": "component",
+			"repeatable": false,
+			"component": "components.leads"
 		}
 	}
 }
